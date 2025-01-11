@@ -26,11 +26,10 @@ class Playlist{
 		System.out.println(desertIslandPlaylist.size());
 		int songA = desertIslandPlaylist.indexOf("Skrillex - Rumble"); // this saves the index of a song to a variable.
 		int songB = desertIslandPlaylist.indexOf("Reflekt - Need To Feel Love");
-		System.out.println(desertIslandPlaylist);
-		
+		System.out.println(desertIslandPlaylist);	
 		desertIslandPlaylist.set(songA, "Reflekt - Need To Feel Love");
 		System.out.println(desertIslandPlaylist);
-		desertIslandPlaylist.set(songB, "Skrillex - Rumble");
+		desertIslandPlaylist.set(songB, "Skrillex - Rumble"); // using .set we are able to swap the positions of songs thanks to saving the indexOf into a variable. calling songB as a parameter tells java to use that as the position to save the following String
 		System.out.println(desertIslandPlaylist);
 	}
 }
