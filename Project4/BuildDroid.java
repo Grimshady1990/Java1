@@ -27,21 +27,21 @@ public class Droid{
 		taskEnergy();
 		System.out.println(name + " now has " + batteryLife + "% remaining");
 	}	
-// This Method is a little out of our league for what we hav learnt so far so I will add comments in a attempt to prove my understanding.
-	public void energyTransfer(Droid otherDroid, int energyAmount){// this = Droid making transfer. otherDroid = Droid recieving
-		int maxBatteryLevel = 100;
-		if (this.batteryLife >= energyAmount){// if droid giving has a battery life greater or equal to energy request continue to next step
-			if (otherDroid.batteryLife + energyAmount <= maxBatteryLevel){// if recieving droids battery life plus energy recieved is less or equal to max battery continue to next step
-				this.batteryLife -= energyAmount; // take energy from the giving droid
-				otherDroid.batteryLife += energyAmount; // add energy tho recieving droid and print both statements.
-				System.out.println(this.name + " Transfered " + energyAmount + "% of his energy to " + otherDroid.name);
-				System.out.println(this.name + " has " + this.batteryLife + "% energy remaining & " + otherDroid.name + " has " + otherDroid.batteryLife + "% energy remaining.");
-			   		
+// This Method is a little out of our league for what we have learnt so far so I will add comments in a attempt to prove my understanding.
+	public void energyTransfer(Droid otherDroid, int energyAmount){
+		int maxBattery = 100; // this variable 
+		int batteryLeft = 100 % otherDroid.batteryLife;
+		if (this.batteryLife < energyAmount){
+			System.out.println("Sorry " + this.name + " does not have enough power to make the transfer. The maximum transfer for  " + this.name + " is " + this.batteryLife + "%.");
 				
-			} 
-		else { // if both if statements are not true then we print the else statement.
-			System.out.println(otherDroid.name +"'s battery is full. Cannot make Transfer.");
-			}
+		}
+		else if (batteryLeft < energyAmount){
+			System.out.println("Failure! Too much energy is being transfered. The maximum amount " + otherDroid.name + " can recieve is " + batteryLeft + "%."); 
+		}
+		else {
+			otherDroid.batteryLife += energyAmount;
+			this.batteryLife -= energyAmount;
+			System.out.println("Success! " + this.name + " sent " + energyAmount + "% to " + otherDroid.name + "." + this.name + " now has " + this.batteryLife + "% and " + otherDroid.name + " now has " + otherDroid.batteryLife + "%."); 
 		}	
 	}
 	// simple method to pull the energy from droids
@@ -60,6 +60,8 @@ public class Droid{
 		xeon.preformTask("programming");
 		neo.energyTransfer(xeon, 30);// This instance field triggers the energyTranfer method
 		neo.energyTransfer(xeon, 20);
+		xeon.energyTransfer(neo, 40);
+		xeon.energyTransfer(neo, 120);
 		neo.energyReport();
 		xeon.energyReport();
 	}
