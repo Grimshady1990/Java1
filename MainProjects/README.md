@@ -1,0 +1,1 @@
+ This repo is designed to hold my simple Java projects that showcase the skills I picked up during the Java 1 module in the REST API skill path. For details of each project please refer to the README files attached to each document
