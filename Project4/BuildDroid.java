@@ -1,16 +1,16 @@
 /* This program will preform various tasks that we will need methods and instance fields to work.
  * We need to consider what tasks the droids will preform so we can create the correct methods for them.
  * - The droids when created will receive a name and 100% energy when they are initially created.
- * - Droids will preform tasks which cost 10% energy each.
- * - Droids should be able to call energy status at any time.
- * - Droids should be able to transfer energy between each other */
+ * - BuildDroids will preform tasks which cost 10% energy each.
+ * - BuildDroids should be able to call energy status at any time.
+ * - BuildDroids should be able to transfer energy between each other */
 
-public class Droid{
+public class BuildDroid{
 // The variables stored in the public class will act to initiate a name and energy to all new droids 
 	int batteryLife = 100;
 	String name;
-// This construtor method holds the string droidName that will be used when we create a new instance of the Droid this is how we will give the droid's names
-	public Droid(String droidName){
+// This construtor method holds the string droidName that will be used when we create a new instance of the BuildDroid this is how we will give the droid's names
+	public BuildDroid(String droidName){
 		name = droidName;
 	}
 // The taskEnergy method will be used inside the preformTask method to remove the energy used when a task is preformed
@@ -28,7 +28,7 @@ public class Droid{
 		System.out.println(name + " now has " + batteryLife + "% remaining");
 	}	
 // This Method is a little out of our league for what we have learnt so far so I will add comments in a attempt to prove my understanding.
-	public void energyTransfer(Droid otherDroid, int energyAmount){
+	public void energyTransfer(BuildDroid otherDroid, int energyAmount){
 		int maxBattery = 100; // this variable 
 		int batteryLeft = 100 % otherDroid.batteryLife;
 		if (this.batteryLife < energyAmount){
@@ -48,10 +48,10 @@ public class Droid{
 	public void energyReport(){
 		System.out.println(name + " energy report: Battery " + batteryLife + "%.");
 	}
-// In the main method you can see how new Droids are created and how we can get them to preform task.
+// In the main method you can see how new BuildDroids are created and how we can get them to preform task.
 	public static void main(String[] args){
-		Droid xeon = new Droid("Xeon");// Creates new droid
-		Droid neo = new Droid("Neo");
+		BuildDroid xeon = new BuildDroid("Xeon");// Creates new droid
+		BuildDroid neo = new BuildDroid("Neo");
 		System.out.println(xeon);//Prints the toString statement
 		System.out.println(neo);
 		xeon.preformTask("cleaning"); // This instance field triggers the preformTask method

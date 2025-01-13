@@ -1,4 +1,4 @@
-public class CitiesAndContinents{
+public class ContinentsCities{
 	public static void main(String[] args){
 		int number = 5; // this number varible is how we will select which case to print
 		String message = ""; // this empty string is the variable we will use to print each case

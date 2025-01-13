@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.ArrayList;// We need to import these utilities in order for or Arrays and ArrayLists to function
 
-class Playlist{
+class DesertIslandPlaylist{
 	public static void main(String[] args){
 		System.out.println("init test");
 		String[] favoriteSongs = {"Scooter - Logical Song", "The Streets - Turn The Page", "Technomatic - Lakota", "Bicep - Glue", "Egzod - Royalty", "Skrillex - Rumble", "Twisted - Afterlife", "Tiesto - Lethal Industry", "Rob Dougan - Clubbed To Death", "Reflekt - Need To Feel Love"}; // This is an Array of my favorite songs
