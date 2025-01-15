@@ -19,19 +19,19 @@ public class LmnhBuildDroid{
 	public void energyReport(){
 		System.out.println("Energy Report: " + name + " has " + batteryLife + "% battery remaining.");
 	}
-	public void energyTransfer(LmnhBuildDroid otherDroid, int energyAmount){
-		int batteryLeft = 100 % otherDroid.batteryLife;
+	public void energyTransfer(LmnhBuildDroid otherLmnhBuildDroid, int energyAmount){
+		int batteryLeft = 100 % otherLmnhBuildDroid.batteryLife;
 		if (this.batteryLife < energyAmount){
 			System.out.println("Transfer Failed! " + this.name + " does not have enough energy to make the transfer. Maxiumum transfer is " +  this.batteryLife + "%.");
 		}
 		else if (batteryLeft < energyAmount){
-			System.out.println("Transfer failed! " + otherDroid.name + " has to much energy. The maximum that can be transfered is " + batteryLeft + "%.");
+			System.out.println("Transfer failed! " + otherLmnhBuildDroid.name + " has to much energy. The maximum that can be transfered is " + batteryLeft + "%.");
 		}
 		else {
 			this.batteryLife -= energyAmount;
-			otherDroid.batteryLife += energyAmount;
-			System.out.println("Transfer successful! " + this.name + " has transfered " + energyAmount + "% battery power to " + otherDroid.name + ".");
-			System.out.println(this.name + " now has " + this.batteryLife + "% battery remaining, and " + otherDroid.name + " has " + otherDroid.batteryLife + "% battery remaining.");
+			otherLmnhBuildDroid.batteryLife += energyAmount;
+			System.out.println("Transfer successful! " + this.name + " has transfered " + energyAmount + "% battery power to " + otherLmnhBuildDroid.name + ".");
+			System.out.println(this.name + " now has " + this.batteryLife + "% battery remaining, and " + otherLmnhBuildDroid.name + " has " + otherLmnhBuildDroid.batteryLife + "% battery remaining.");
 		}
 	}
 	public static void main(String[] args){
