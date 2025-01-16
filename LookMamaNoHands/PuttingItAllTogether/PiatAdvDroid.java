@@ -63,6 +63,30 @@ public class PiatAdvDroid{
         double result = a % b;
         System.out.println("Math problem complete! The remainder " + a + " and " + b + " is: " + result);
     }
+    // Switch that prints a inspirational quote when a number between 1 and 5 is selected
+    public void randomInspire(int number){
+        switch(number){
+        case 1:
+            System.out.println("Dream big. Start small. Act now.");
+            break;
+        case 2:
+            System.out.println("Success is a journey, not a destination.");
+            break;
+        case 3:
+            System.out.println("Believe you can, and you're halfway there.");
+            break;
+        case 4:
+            System.out.println("Turn setbacks into comebacks.");
+            break;
+        case 5:
+            System.out.println("Your only limit is your mind.");
+            break;
+        default:
+            System.out.println("Please choose a number between 1 and 5 :)");
+            break;
+        }
+    }
+    
     // Main method that calls all other methods
     public static void main(String[] args){
         System.out.println("init test");
@@ -79,5 +103,7 @@ public class PiatAdvDroid{
         neo.div(100, 10);
         neo.multi(5, 2);
         neo.mod(100, 90);
+        neo.randomInspire(5);
+        neo.randomInspire(2);
     }
 }
