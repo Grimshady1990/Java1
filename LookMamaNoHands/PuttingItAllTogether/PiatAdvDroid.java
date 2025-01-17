@@ -1,9 +1,8 @@
-import java.util.Arrays;
-import java.util.ArrayList;
+import java.util.ArrayList;// This is imported so we can create the todo list.
 
-public class PiatAdvDroid{
-    int batteryLife = 100;
-    String name;
+public class PiatAdvDroid{ // Public class that holds the entire project
+    int batteryLife = 100; // How much battery life every new droid begins with. 
+    String name; // Acknowledgment that the word 'name' is a String
     ArrayList<String> todoList;
 // toString that prints a message when a new Droid is created    
     public String toString(){
@@ -11,10 +10,11 @@ public class PiatAdvDroid{
     }
 // Constructor method to call new Droids and holds a string to call them by name
     public PiatAdvDroid(String droidName){
-        name = droidName;
-        todoList = new ArrayList<>();
+        name = droidName; // This turns name into a actual variable.
+        todoList = new ArrayList<>(); // this creates the todo list from the ArrayList util.
     }
     // task energy that is taken from performing task.
+    // it is conditioned to either preform the task or not based on the droids battery life.
     public boolean taskEnergySmall(){
         if (batteryLife < 10){
             System.out.println("Power Failure! " + name + " does not have enough power to perform task. Please charge battery minimum 10%.");
@@ -24,7 +24,7 @@ public class PiatAdvDroid{
         batteryLife -= 10;
         return true;
             }
-    }
+    }    // All taskEnergy methods are the same except they have different energy amounts
     public boolean taskEnergyMed(){
         if (batteryLife < 20){
             System.out.println("Power Failure! " + name + " does not have enough power to perform task. Please charge battery minimum 20%.");
@@ -36,7 +36,7 @@ public class PiatAdvDroid{
         }
     }
     public boolean taskEnergyLrg(){
-        if (batteryLife < 30){
+        if (batteryLife < 30) {
             System.out.println("Power Failure! " + name + " does not have enough power to perform task. Please charge battery minimum 30%.");
             return false;
        } else{
@@ -46,12 +46,16 @@ public class PiatAdvDroid{
     }
     
     
-    // mehtod that allows us to preform a task taking a string as the task and calls taskEnergySmall
+    // method that allows us to preform a task taking a string as the task and calls taskEnergyMed
     public void performTask(String task){
-        System.out.println("Objective Confirmed! " + name + " will now perform the task: " + task);
         if (!taskEnergyMed()){
             return;
         }
+
+        System.out.println("Objective Confirmed! " + name + " will now perform the task: " + task);
+
+        System.out.println("This task used 20% battery. " + name + "'s battery is now at " + batteryLife + "%.");
+
            }
 // Method to Transfer energy from one droid to another
     public void energyTransfer(PiatAdvDroid otherDroid, int energyAmount){
@@ -113,7 +117,7 @@ public class PiatAdvDroid{
     }
     // Method that finds the remainder of two numbers
     public void mod(double a, double b){
-        if (!taskEnergySmall()){
+        if (!taskEnergySmall()){// this if statement kills the task if the conditions are met
             return;
         }
 
@@ -167,6 +171,7 @@ public class PiatAdvDroid{
         }
         System.out.println("This task used 30% battery. " + name + "'s battery is now at " + batteryLife + "%.");
     }
+    // This Switch is used to call different functions of our todo list.
     public void todoList(String action, String task){
         switch (action.toLowerCase()){
             case "add":
@@ -223,29 +228,30 @@ public class PiatAdvDroid{
 
         }
     }
+    // Method for energy report
     public void energyReport(){
         System.out.println("Energy Report: " + name + " currently has " + batteryLife + "% battery remaining.");
     }
 
     // Main method that calls all other methods
     public static void main(String[] args){
-        PiatAdvDroid neo = new PiatAdvDroid("Neo");
+        PiatAdvDroid neo = new PiatAdvDroid("Neo");//This is how to create a new droid
         PiatAdvDroid xeon = new PiatAdvDroid("Xeon");
         PiatAdvDroid charger1 = new PiatAdvDroid("Charger1");
         PiatAdvDroid charger2 = new PiatAdvDroid("Charger2");
         PiatAdvDroid charger3 = new PiatAdvDroid("Charger3");
         PiatAdvDroid charger4 = new PiatAdvDroid("Charger4");
-        System.out.println(neo);
-        neo.performTask("Cleaning");
-        charger1.energyTransfer(neo, 30);
+        System.out.println(neo); //This prints the Droids welcome message.
+        neo.performTask("Cleaning");// This is how to perform a task.
+        charger1.energyTransfer(neo, 30);// This is how to transfer energy from one droid to another.
         charger1.energyTransfer(neo, 120);
         charger1.energyTransfer(neo, 20);
-        neo.add(5, 5);
-        neo.sub(20, 10);
-        neo.div(100, 10);
-        neo.multi(2, 5);
-        neo.mod(100, 90);
-        neo.randomInspire(1);
+        neo.add(5, 5); // This is how to perform simple addition.
+        neo.sub(20, 10);// This is how to perform simple subtraction.
+        neo.div(100, 10);// This is how to perform simple division.
+        neo.multi(2, 5); // This is how to perform simple multiplication.
+        neo.mod(100, 90); // This is how we find the remainder of two numbers.
+        neo.randomInspire(1); // This is how we print a random inspriational quote
         charger1.energyTransfer(neo, 80);
         neo.randomInspire(2);
         neo.randomInspire(3);
@@ -253,14 +259,14 @@ public class PiatAdvDroid{
         charger2.energyTransfer(neo,90);
         neo.randomInspire(5);
         neo.randomInspire(6);
-        neo.loanCalc(5, 10000, 10, 2000);
+        neo.loanCalc(5, 10000, 10, 2000); // This is how we calculate a loan.
         charger3.energyTransfer(neo, 90);
-        neo.todoList("add", "Go to the tech store");
+        neo.todoList("add", "Go to the tech store");// This is how we add things to the droids todo list.
         neo.todoList("add", "Wake up Xeon");
-        neo.todoList("view", "");
-        neo.todoList("remove", "Go to the tech store");
+        neo.todoList("view", ""); // This is how to view the droids todo list
+        neo.todoList("remove", "Go to the tech store");// This is how to remove items from the todo list.
         neo.todoList("view", "");
         System.out.println(xeon);
-        xeon.energyReport();
+        xeon.energyReport(); // This is how we pull a energy report.
     }
 }
