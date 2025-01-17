@@ -59,14 +59,14 @@ public class PiatAdvDroid{ // Public class that holds the entire project
            }
 // Method to Transfer energy from one droid to another
     public void energyTransfer(PiatAdvDroid otherDroid, int energyAmount){
-        int batteryLeft = 100 - otherDroid.batteryLife;
-            if (this.batteryLife < energyAmount){
+        int batteryLeft = 100 - otherDroid.batteryLife; //This variable calculates how much battery space the recieving droid has remaining.
+            if (this.batteryLife < energyAmount){//if the giving droid does not have enough battery the  transfer will fail
                 System.out.println("Transfer Failed! " + this.name + " does not have enough energy to make the transfer. The maximum that " + this.name + " can transfer is " + this.batteryLife + "%.");
             }
-            else if(batteryLeft < energyAmount){
+            else if(batteryLeft < energyAmount){// If the amount of space reaming in the recieving battery is less than amount recieved, transfer fails.
                 System.out.println("Transfer Failed! " + otherDroid.name + " does not have enough battery space free. The maximum that can be transfered is " + batteryLeft + "%.");
             }
-            else {
+            else {// if both the above conditions are false then we continue with the transfer.
                 this.batteryLife -= energyAmount;
                 otherDroid.batteryLife += energyAmount;
                 System.out.println("Transfer Successful! " + this.name + " has transfered " + energyAmount + "% energy to " + otherDroid.name + ". " + this.name + " now has " + this.batteryLife + "% battery, and " + otherDroid.name + " now has " + otherDroid.batteryLife + "% battery.");
@@ -74,7 +74,7 @@ public class PiatAdvDroid{ // Public class that holds the entire project
     }
 // Method that preforms addition
     public void add(double a, double b){
-        if (!taskEnergySmall()){
+         if (!taskEnergySmall()){// this if statement kills the task if the right conditions are not met.
             return;
         }
         double result = a + b;
@@ -234,7 +234,7 @@ public class PiatAdvDroid{ // Public class that holds the entire project
     }
 
     // Main method that calls all other methods
-    public static void main(String[] args){
+    public static void main(String[] args){:
         PiatAdvDroid neo = new PiatAdvDroid("Neo");//This is how to create a new droid
         PiatAdvDroid xeon = new PiatAdvDroid("Xeon");
         PiatAdvDroid charger1 = new PiatAdvDroid("Charger1");
