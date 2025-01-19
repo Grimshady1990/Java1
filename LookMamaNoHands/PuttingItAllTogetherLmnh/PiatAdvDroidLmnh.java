@@ -111,7 +111,7 @@ public class PiatAdvDroidLmnh{
         System.out.println("Task Complete: " + name + " used 20% battery power and has " + batteryLife + "% remaining.");  
         }
     }
-<<<<<<< HEAD
+
     public void add2num(int a, int b){
 	    int result = a + b;
 	    System.out.println(a + " + " + b + " = " + result);
@@ -153,7 +153,7 @@ public class PiatAdvDroidLmnh{
             System.out.println("Remove Failure! There is no task called " + task + " in your todo list.");
         }
         System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
->>>>>>> 2419ba9 (added complete simple calc function)
+
 
     }
     public void viewTasks(){
@@ -236,9 +236,9 @@ public class PiatAdvDroidLmnh{
         charger2.energyTransfer(bert, 90);
         bert.randomInspire(5);
         bert.randomInspire(6);
-<<<<<<< HEAD
+
 	bert.add2num(10, 10);
-=======
+
         bert.energyReport();
         bert.todoList("add", "Build new circuit");
         bert.todoList("add", "Learn Break dancing");
@@ -252,6 +252,6 @@ public class PiatAdvDroidLmnh{
         bert.div2Nums(20, 2);
         bert.multi2Nums(5, 2);
 
->>>>>>> 2419ba9 (added complete simple calc function)
+
     }
 }
