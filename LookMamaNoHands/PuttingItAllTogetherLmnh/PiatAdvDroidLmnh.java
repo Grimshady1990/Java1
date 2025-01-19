@@ -6,6 +6,7 @@ public class PiatAdvDroidLmnh{
     ArrayList<String> todoList;
     public PiatAdvDroidLmnh(String droidName){
         name = droidName;
+        todoList = new ArrayList<>();
     }
     public String toString(){
         return "Hello I am " + name + " how can I help you today?";
@@ -63,7 +64,7 @@ public class PiatAdvDroidLmnh{
         else {
             this.batteryLife -= energyAmount;
             otherPiatAdvDroidLmnh.batteryLife += energyAmount;
-            System.out.println("Transfer Successful! " + this.name + " has transfered " + energyAmount + "% battery power to " + otherPiatAdvDroidLmnh.name + ". " + this.name + " now has " + this.batteryLife + " and " + otherPiatAdvDroidLmnh.name + " now has " + otherPiatAdvDroidLmnh.batteryLife + "%.");
+            System.out.println("Transfer Successful! " + this.name + " has transfered " + energyAmount + "% battery power to " + otherPiatAdvDroidLmnh.name + ". " + this.name + " now has " + this.batteryLife + "% and " + otherPiatAdvDroidLmnh.name + " now has " + otherPiatAdvDroidLmnh.batteryLife + "%.");
         }
     }
     public void loanCalc(int loanLength, int loanAmount, int intrestRate, int downPayment){
@@ -110,17 +111,110 @@ public class PiatAdvDroidLmnh{
         System.out.println("Task Complete: " + name + " used 20% battery power and has " + batteryLife + "% remaining.");  
         }
     }
+
     public void add2num(int a, int b){
 	    int result = a + b;
 	    System.out.println(a + " + " + b + " = " + result);
     }
+=======
+    public void todoList(String action, String task){
+        switch(action.toLowerCase()){
+            case "add":
+                addTask(task);
+                break;
+            case "remove":
+                removeTask(task);
+                break;
+            case "view":
+                viewTasks();
+                break;
+            default:
+                System.out.println("Invalid Input! please use 'add', 'remove', or 'view'.");
+        }
+    }
+    public void addTask(String task){
+        if (!taskEnergySml()){
+            return;
+        }
+        
+        todoList.add(task);
+        System.out.println(task + " has been added to " + name + "'s todo list.");
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
+        
+    }
+    public void removeTask(String task){
+        if(!taskEnergySml()){
+            return;
+        }
+        else if (todoList.remove(task)){
+            System.out.println("Task Removed! I have successfully removed " + task + " from your todo list.");
+        }
+        else {
+            System.out.println("Remove Failure! There is no task called " + task + " in your todo list.");
+        }
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
 
+
+    }
+    public void viewTasks(){
+        if (!taskEnergySml()){
+            return;
+        }
+        else if (todoList.isEmpty()){
+            System.out.println(name + "'s todo list is empty.");
+        }
+        else{
+            System.out.println(name + "'s todo list:");
+            for (String task : todoList) {
+                System.out.println("- " + task);
+            }
+        }
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
+
+    }
+    public void add2Nums(int a, int b){
+        if (!taskEnergySml()){
+            return;
+        }
+        int result = a + b;
+        System.out.println(a + " + " + b + " = " + result);
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
+
+    }
+    public void sub2Nums(int a, int b){
+        if (!taskEnergySml()){
+            return;
+        }
+        int result = a - b;
+        System.out.println(a + " - " + b + " = " + result);
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
+
+    }
+    public void div2Nums(int a, int b){
+        if (!taskEnergySml()){
+            return;
+        }
+        int result = a / b;
+        System.out.println(a + " ÷ " + b + " = " + result); 
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
+
+    }
+    public void multi2Nums(int a, int b){
+        if (!taskEnergySml()){
+            return;
+        }
+        int result = a * b;
+        System.out.println(a + " x " + b + " = " + result);
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining");
+
+    }
     public static void main(String[] args){
         System.out.println("init test");
         PiatAdvDroidLmnh bert = new PiatAdvDroidLmnh("Bert");
         PiatAdvDroidLmnh kurt = new PiatAdvDroidLmnh("Kurt");
         PiatAdvDroidLmnh charger1 = new PiatAdvDroidLmnh("Charger 1");
         PiatAdvDroidLmnh charger2 = new PiatAdvDroidLmnh("Charger 2");
+        PiatAdvDroidLmnh charger3 = new PiatAdvDroidLmnh("Charger 3");
         System.out.println(bert);
         bert.energyReport();
         bert.performTask("Cleaning");
@@ -142,7 +236,23 @@ public class PiatAdvDroidLmnh{
         charger2.energyTransfer(bert, 90);
         bert.randomInspire(5);
         bert.randomInspire(6);
+
 	bert.add2num(10, 10);
+
+        bert.energyReport();
+        bert.todoList("add", "Build new circuit");
+        bert.todoList("add", "Learn Break dancing");
+        bert.todoList("view", "");
+        bert.todoList("remove", "Build new circuit");
+        bert.todoList("remove", "Cuild noe cirtrus");
+        bert.todoList("view", " ");
+        charger3.energyTransfer(bert, 100);
+        bert.add2Nums(10, 10);
+        bert.sub2Nums(20, 10);
+        bert.div2Nums(20, 2);
+        bert.multi2Nums(5, 2);
+
+
     }
 }
 
