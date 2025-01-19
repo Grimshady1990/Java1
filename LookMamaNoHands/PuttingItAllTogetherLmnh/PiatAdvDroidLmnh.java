@@ -110,6 +110,10 @@ public class PiatAdvDroidLmnh{
         System.out.println("Task Complete: " + name + " used 20% battery power and has " + batteryLife + "% remaining.");  
         }
     }
+    public void add2num(int a, int b){
+	    int result = a + b;
+	    System.out.println(a + " + " + b + " = " + result);
+    }
 
     public static void main(String[] args){
         System.out.println("init test");
@@ -138,5 +142,6 @@ public class PiatAdvDroidLmnh{
         charger2.energyTransfer(bert, 90);
         bert.randomInspire(5);
         bert.randomInspire(6);
+	bert.add2num(10, 10);
     }
 }
