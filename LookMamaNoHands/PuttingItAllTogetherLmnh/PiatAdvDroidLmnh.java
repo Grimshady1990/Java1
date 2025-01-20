@@ -66,6 +66,63 @@ public class PiatAdvDroidLmnh{
             System.out.println("Transfer Successful! " + this.name + " has transfered " + energyAmount + "% battery power to " + otherDroid.name + "." + this.name + " now has " + this.batteryLife + ", and " + otherDroid.name + " has " + otherDroid.batteryLife + "% battery power");
         }
     }
+    public void energyReport(){
+        System.out.println("Energy Report: " + name + " has " + batteryLife + "% battery life remaining.");
+    }
+    public void randomInspire(int number){
+        if (!taskEnergySml()){
+            return;
+        }
+        else{
+        switch (number){
+            case 1:
+                System.out.println("Dream big, start small, act now!");
+                break;
+            case 2:
+                System.out.println("Success is a journey not a destination");
+                break;
+            case 3:
+                System.out.println("Belive you can and your halfway there.");
+                break;
+            case 4:
+                System.out.println("Turn setbacks into comebacks.");
+                break;
+            case 5:
+                System.out.println("Your only limit is your mind");
+                break;
+            default:
+                System.out.println("ERROR: Please choose a number between 1 -5");
+        }
+        System.out.println("This task used 10% battery power " + name + " now has " + batteryLife + "% battery life remaining.");
+        }
+
+    }
+
+    public void todoList(String action, String task){
+        switch (action.toLowerCase()){
+            case "add":
+                addTask(task);
+                break;
+            case "remove":
+                removeTask(task);
+                break;
+            case "view":
+                viewTasks();
+                break;
+            default:
+                System.out.println("ERROR: Please use 'add', 'remove', or 'view.");
+        }
+    }
+    public void addTask(String task){
+        if (!taskEnergyLrg()){
+            return;
+        }
+        else{
+            todoList.add(task);
+            System.out.Println("task added to " + name + "'s todo list: " + task);
+        }
+    }
+
     public static void main(String[] args){
     System.out.println("test init");
     PiatAdvDroidLmnh fred = new PiatAdvDroidLmnh("Fred");
@@ -76,6 +133,13 @@ public class PiatAdvDroidLmnh{
     john.energyTransfer(fred, 120);
     john.energyTransfer(fred, 30);
     john.energyTransfer(fred, 20);
+    john.energyReport();
+    john.randomInspire(1);
+    john.randomInspire(2);
+    john.randomInspire(3);
+    john.randomInspire(4);
+    john.randomInspire(5);
+    john.randomInspire(6);
 }
 
 }
