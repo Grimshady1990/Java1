@@ -119,15 +119,16 @@ public class PiatAdvDroidLmnh{
         }
         else{
             todoList.add(task);
-            System.out.Println("task added to " + name + "'s todo list: " + task);
+            System.out.println("task added to " + name + "'s todo list: " + task);
         }
+        System.out.println("This task used 30% battery power. " + name + " now has " + batteryLife + "% battery power remaining.");
     }
     public void removeTask(String task){
         if (!taskEnergyLrg()){
             return;
         }
         else if (todoList.remove(task)){
-            System.out.println("You have successfuly removed " + task + " from " + names + "'s todo list");
+            System.out.println("You have successfuly removed " + task + " from " + name + "'s todo list");
         }
         else {
             System.out.println("ERROR! Cannot find tge task you have specified?! Please use 'view' to view current list");
@@ -138,13 +139,32 @@ public class PiatAdvDroidLmnh{
         if (!taskEnergyLrg()){
             return;
         }
-else:
+        else if (todoList.isEmpty()){
+            System.out.println(name + "'s todo list is empty.");
+        }
+        else {
+            System.out.println(name + "'s Todo List:");
+            for (String task : todoList)  {
+                System.out.println("- " + task);
+            }
+        }
+        System.out.println("This task used 30% battery life. " + name + " now has " + batteryLife + "% remaining.");
+    }
+    public void add2nums(int a, int b){
+        if (!taskEnergyMed()){
+            return;
+        }
+        int result = a + b;
+        System.out.println(a + " + " + b + " = " + result);
+        System.out.println("This task used 20% battery life. " + name + " now has " + batteryLife + "% remaining.");
     }
 
     public static void main(String[] args){
     System.out.println("test init");
     PiatAdvDroidLmnh fred = new PiatAdvDroidLmnh("Fred");
     PiatAdvDroidLmnh john = new PiatAdvDroidLmnh("John");
+    PiatAdvDroidLmnh charger1 = new PiatAdvDroidLmnh("Charger1");
+    PiatAdvDroidLmnh charger2 = new PiatAdvDroidLmnh("Charger2");
     System.out.println(fred);
     System.out.println(john);
     fred.performTask("Cleaning");
@@ -158,6 +178,16 @@ else:
     john.randomInspire(4);
     john.randomInspire(5);
     john.randomInspire(6);
-}
+    System.out.println(charger1);
+    john.energyReport();
+    charger1.energyTransfer(john, 80);
+    john.todoList("add", "Go to the electrical store");
+    john.todoList("add", "Buy some switches");
+    john.todoList("view", "");
+    System.out.println(charger2);
+    charger2.energyTransfer(john, 90);
+    john.todoList("remove", "Go to the electrical store");
+    john.todoList("view", "");
+    }
 
 }
