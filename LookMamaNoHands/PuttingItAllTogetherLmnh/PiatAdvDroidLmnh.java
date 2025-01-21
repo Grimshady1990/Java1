@@ -158,13 +158,57 @@ public class PiatAdvDroidLmnh{
         System.out.println(a + " + " + b + " = " + result);
         System.out.println("This task used 20% battery life. " + name + " now has " + batteryLife + "% remaining.");
     }
+    public void sub2nums(int a, int b){
+        if (!taskEnergyMed()){
+            return;
+        }
+        int result = a - b;
+        System.out.println(a + " - " + b + " = " + result);
+        System.out.println("This task used 20% battery life. " + name + " now has " + batteryLife + "% remaining.");
 
+    }
+    public void div2nums(int a, int b){
+        if (!taskEnergyMed()){
+            return;
+        }
+        int result = a / b;
+        System.out.println(a + " ÷ " + b + " = " + result);
+        System.out.println("This task used 20% battery life. " + name + " now has " + batteryLife + "% remaining.");
+
+    }
+    public void multi2nums(int a, int b){
+        if (!taskEnergyMed()){
+            return;
+        }
+        int result = a * b;
+        System.out.println(a + " x " + b + " = " + result);
+        System.out.println("This task used 20% battery life. " + name + " now has " + batteryLife + "% remaining.");
+
+    }
+    public void loanCalc(int loanLength, int loanAmount, int intrestRate, int downPayment){
+        if (!taskEnergyLrg()){
+            return;
+        }
+        else if (loanAmount <= 0 || intrestRate <= 0 || downPayment >= loanAmount){
+            System.out.println("ERROR! Please enter a valid loan");
+        }
+        else{
+            int amountRemaining = loanAmount - downPayment;
+            int months = loanLength * 12;
+            int monthlyBalance = amountRemaining / months;
+            int intrest = (monthlyBalance * intrestRate) / 100;
+            int monthlyTotal = monthlyBalance + intrest;
+            System.out.println("Loan Successful! You will now be charged $" + monthlyTotal + " per month for the next " + months + "months");
+        }
+    }
     public static void main(String[] args){
     System.out.println("test init");
     PiatAdvDroidLmnh fred = new PiatAdvDroidLmnh("Fred");
     PiatAdvDroidLmnh john = new PiatAdvDroidLmnh("John");
     PiatAdvDroidLmnh charger1 = new PiatAdvDroidLmnh("Charger1");
     PiatAdvDroidLmnh charger2 = new PiatAdvDroidLmnh("Charger2");
+    PiatAdvDroidLmnh charger3 = new PiatAdvDroidLmnh("Charger3");
+    PiatAdvDroidLmnh charger4 = new PiatAdvDroidLmnh("Charger4");
     System.out.println(fred);
     System.out.println(john);
     fred.performTask("Cleaning");
@@ -188,6 +232,19 @@ public class PiatAdvDroidLmnh{
     charger2.energyTransfer(john, 90);
     john.todoList("remove", "Go to the electrical store");
     john.todoList("view", "");
+    john.add2nums(12345,12345);
+    john.sub2nums(12345,12345);
+    john.add2nums(12345,12345);
+    charger3.energyTransfer(john, 100);
+    john.div2nums(12345,12345);
+    john.multi2nums(12345,12345);
+    john.loanCalc(5, 10000, 10, 2000);
+    john.loanCalc(5, 10000, 0, 2000);
+    charger4.energyTransfer(john, 100);
+    john.loanCalc(5, 0, 10, 2000);
+    john.loanCalc(5, 10000, 10, 20000);
+
+
     }
 
 }
