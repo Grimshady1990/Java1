@@ -122,6 +122,24 @@ public class PiatAdvDroidLmnh{
             System.out.Println("task added to " + name + "'s todo list: " + task);
         }
     }
+    public void removeTask(String task){
+        if (!taskEnergyLrg()){
+            return;
+        }
+        else if (todoList.remove(task)){
+            System.out.println("You have successfuly removed " + task + " from " + names + "'s todo list");
+        }
+        else {
+            System.out.println("ERROR! Cannot find tge task you have specified?! Please use 'view' to view current list");
+        }
+        System.out.println("This task used 30% battery power. " + name + " now has " + batteryLife + "% battery life remaining");
+    }
+    public void viewTasks(){
+        if (!taskEnergyLrg()){
+            return;
+        }
+else:
+    }
 
     public static void main(String[] args){
     System.out.println("test init");
