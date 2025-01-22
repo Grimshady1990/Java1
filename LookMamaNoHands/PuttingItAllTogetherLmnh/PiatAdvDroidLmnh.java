@@ -4,17 +4,16 @@ public class PiatAdvDroidLmnh{
     int batteryLife = 100;
     String name;
     ArrayList<String> todoList;
-
     public PiatAdvDroidLmnh(String droidName){
         name = droidName;
         todoList = new ArrayList<>();
     }
     public String toString(){
-        return "Hello my name is " + name + " how can I help you today?";
+        return "NEW DROID! Hello I am " + name + " how can I help you today\n";
     }
     public boolean taskEnergySml(){
         if (batteryLife < 10){
-            System.out.println("POWER FAILURE! " + name + " does not have enough power to perform this task. The minimum requirement is 10%");
+            System.out.println("POWER FAILURE! " + name + "'s baterry is to low. the minimum requirement for this task is 10%\n");
             return false;
         }
         else {
@@ -24,7 +23,7 @@ public class PiatAdvDroidLmnh{
     }
     public boolean taskEnergyMed(){
         if (batteryLife < 20){
-            System.out.println("POWER FAILURE! " + name + " does not have enough power to perform this task. The minimum requirement is 20%");
+            System.out.println("POWER FAILURE! " + name + "'s baterry is to low. the minimum requirement for this task is 20%\n");
             return false;
         }
         else {
@@ -34,12 +33,59 @@ public class PiatAdvDroidLmnh{
     }
     public boolean taskEnergyLrg(){
         if (batteryLife < 30){
-            System.out.println("POWER FAILURE! " + name + " does not have enough power to perform this task. The minimum requirement is 30%");
-            return false;
+        System.out.println("POWER FAILURE! " + name + "'s baterry is to low. the minimum requirement for this task is 20%\n");
+        return false;
         }
         else {
             batteryLife -= 30;
             return true;
+        }
+    }
+    public void add2nums(int a, int b){
+        if (!taskEnergyLrg()){
+            return;
+        }
+        int result = a + b;
+        System.out.println("ADDITION COMPLETE: " + a + " + " + b + " = " + result + "\n");
+        System.out.println("ENERGY LOSS! This task used 30% energy " + name + " now has " + batteryLife + "% battery life remaining.\n");
+    }
+    public void sub2nums(int a, int b){
+        if (!taskEnergyMed()){
+            return;
+        }
+        int result = a - b;
+        System.out.println("SUBTRACTION COMPLETE: " + a + " - " + b + " = " + result + "\n");
+        System.out.println("ENERGY LOSS! This task used 20% energy " + name + " now has " + batteryLife + "% battery life remaining.\n");
+    }
+    public void div2nums(int a, int b){
+        if (!taskEnergySml()){
+            return;
+        }
+        int result = a / b;
+        System.out.println("DIVISION COMPLETE: " + a + " ÷ " + b + " = " + result + "\n");
+        System.out.println("ENERGY LOSS! This task used 10% energy " + name + " now has " + batteryLife + "% battery life remaining.\n");
+    }
+     public void multi2nums(int a, int b){
+        if (!taskEnergyLrg()){
+            return;
+        }
+        int result = a * b;
+        System.out.println("MULTIPLICATION COMPLETE: " + a + " x " + b + " = " + result + "\n");
+        System.out.println("ENERGY LOSS! This task used 10% energy " + name + " now has " + batteryLife + "% battery life remaining.\n");
+    }
+    public void energyTransfer(PiatAdvDroidLmnh otherDroid, int energyAmount){
+        int freeSpace = 100 - otherDroid.batteryLife;
+        if (this.batteryLife < energyAmount){
+            System.out.println("TRANSFER FAILED! " + name + " does not have enough battery life to make the transfer. The maximum that can be sent is " + batteryLife + "%.\n");
+        }
+        else if (freeSpace < energyAmount){
+            System.out.println("TRANSFER FAILED! " + otherDroid.name + " does not have enough free space to accept the transfer. The maximum that can be sent is " + freeSpace + "%.\n");
+        }
+        else {
+            this.batteryLife -= energyAmount;
+            otherDroid.batteryLife += energyAmount;
+            System.out.println("TRANSFER SUCCESSFUL! " + this.name + " has transfered " + energyAmount + "% battery power to " + otherDroid.name + ".\n");
+            System.out.println(this.name + " now has " + this.batteryLife + "% battery life and " + otherDroid.name + " has " + otherDroid.batteryLife + "% battery life.\n");
         }
     }
     public void todoList(String action, String task){
@@ -54,8 +100,7 @@ public class PiatAdvDroidLmnh{
                 taskView();
                 break;
             default:
-                System.out.println("INPUT FAILURE! Please use 'add', 'remove', or 'view'");
-
+                System.out.println("TODO-LIST ERROR! Please use either the option 'add', 'remove', or 'view'\n");
         }
     }
     public void taskAdd(String task){
@@ -64,8 +109,7 @@ public class PiatAdvDroidLmnh{
         }
         else {
             todoList.add(task);
-            System.out.println("\"" + task + "\" added to " + name + "'s todolist.");
-            System.out.println("This task used 10% of " + name + "'s total battery capacity. " + name + " now has " + batteryLife + "% battery remaining");
+            System.out.println("TASK ADDED! '" + task + "' has been added to " + name + "'s todo list.\n");
         }
     }
     public void taskRemove(String task){
@@ -73,156 +117,88 @@ public class PiatAdvDroidLmnh{
             return;
         }
         else if (todoList.remove(task)){
-        System.out.println("\"" + task + "\" has been removed from " + name + "'s todo list.");
+            System.out.println("TASK REMOVED! '" + task + "' has been removed from " + name + "'s todo list.\n");
         }
-        else{
-            System.out.println("INPUT ERROR! Please check you have input the correct task. use 'view' to list all available tasks.");
-            System.out.println("This task used 10% of " + name + "'s total battery capacity. " + name + " now has " + batteryLife + "% battery remaining");
+        else {
+            System.out.println("REMOVAL ERROR! Please use the 'view' option to review which task you would like to remove.\n");
         }
     }
     public void taskView(){
         if (todoList.isEmpty()){
-            System.out.println(name + "'s todo list is empty. Please use 'add' to add a task");
+            System.out.println("TODO-LIST EMPTY! Please use the 'add' option.\n");
         }
         else {
-            System.out.println("*****" + name + "'s Todo List*****");
+            System.out.println(name + "'s Todo-List\n");
             for (String task : todoList){
-                System.out.println("- " + task);
+                System.out.println("- " + task + "\n");
             }
         }
-            
     }
     public void energyReport(){
-        System.out.println("ENERGY REPORT: " + name + "'s battery is now at " + batteryLife + "%.");
+        System.out.println("ENERGY REPORT! " + name + " has " + batteryLife + "% battery life remaining.\n");
     }
     public void randomInspire(int number){
-        if (!taskEnergyMed()){
-            return;
-        }
-        else{
-            switch(number){
+        switch(number){
             case 1:
-                System.out.println("Turn setbacks into combacks");
+                System.out.println("INSPIRATION! 'Be yourself, you are the best at it'\n");
                 break;
             case 2:
-                System.out.println("Don't wait till tommorow, act now!");
+                System.out.println("INSPIRATION! 'Every great achievment started with someone taking the first step'\n");
                 break;
             case 3:
-                System.out.println("All great accomplishments started with the first step.");
+                System.out.println("INSPIRATION! 'Try Harder!'\n");
                 break;
-           default:
-                System.out.println("INPUT ERROR! Please choose a number between 1-3");
-            }
+            default:
+                System.out.println("INPUT ERROR! Please choose a number between 1-3.\n");
         }
-        System.out.println("This task used 20% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-    }
-    public void energyTransfer(PiatAdvDroidLmnh otherDroid, int energyAmount){
-        int freeSpace = 100 - otherDroid.batteryLife;
-        if (this.batteryLife < energyAmount){
-            System.out.println("TRANSFER FAILURE! " + this.name + " does not have enough battery power to make the transfer. The maximum that can be transfered is " + batteryLife + "%.");
-        }
-        else if (freeSpace < energyAmount){
-            System.out.println("TRANSFER FAILURE! " + otherDroid.name + " does not have enough free battery space to make the transfer. The maximum that can be sent is " + batteryLife + "%.");
-        }
-        else {
-            this.batteryLife -= energyAmount;
-            otherDroid.batteryLife += energyAmount;
-            System.out.println("TRANSFER COMPLETE! " + this.name + " has successfully transfered " + energyAmount + "% to " + otherDroid.name + ".");
-            System.out.println(this.name + " now has " + this.batteryLife + "% battery remaining and " + otherDroid.name + " has " + otherDroid.batteryLife + "% remaining.");
-        }
-    }
-    public void loanCalc(int loanLength, int loanAmount, int intrestRate, int downPayment){
-        if (!taskEnergySml()){
-            return;
-        }
-        else if (loanAmount <= 0 || intrestRate <= 0 || downPayment >= loanAmount){
-            System.out.println("INVALID LOAN! please enter a valid loan.");
-        }
-        else {
-            int remainingBalance = loanAmount - downPayment;
-            int months = loanLength * 12;
-            int monthlyBalance = remainingBalance / months;
-            int intrest = (monthlyBalance * intrestRate) / 100;
-            int monthlyTotal = monthlyBalance + intrest;
-            System.out.println("LOAN SUCCESSFUL! You will now be charged " + monthlyTotal + " per month for the next " + months + " months.");
-            System.out.println("This task used 10% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-        }
-    }
-    public void add2nums(int a, int b){
-        if (!taskEnergyLrg()){
-            return;
-        }
-        int result = a + b;
-        System.out.println(a + " + " + b + " = " + result);
-        System.out.println("This task used 30% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-    }
-    public void sub2nums(int a, int b){
-        if (!taskEnergyMed()){
-            return;
-        }
-        int result = a - b;
-        System.out.println(a + " - " + b + " = " + result);
-        System.out.println("This task used 20% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-    }
-    public void div2nums(double a, double b){
-        if (!taskEnergySml()){
-            return;
-        }
-        double result = a / b;
-        System.out.println(a + " ÷ " + b + " = " + result);
-        System.out.println("This task used 10% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-        }
-    public void multi2nums(int a, int b){
-        if (!taskEnergySml()){
-            return;
-        }
-        int result = a * b;
-        System.out.println(a + " x " + b + " = " + result);
-        System.out.println("This task used 10% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-  
     }
     public void performTask(String task){
-      if (!taskEnergySml()){
-            return;
+        System.out.println("TASK CONFIRMED! " + name + " will now perform the task: " + task + "\n");
+    }
+    public void loanCalc(int loanLength, int loanAmount, int intrestRate, int downPayment){
+        if (loanAmount <= 0 || intrestRate <= 0 || downPayment >= loanAmount){
+            System.out.println("LOAN ERROR! Please enter a valid loan application.\n");
         }
-      System.out.println("TASK CONFIRMED! " + name + " will now perform the task of: " + task);
-      System.out.println("This task used 10% battery power. " + name + "'s battery is now at " + batteryLife + "%.");
-
+        else {
+            int remainingAmount = loanAmount - downPayment;
+            int months = loanLength * 12;
+            int monthlyBalance = remainingAmount / months;
+            int intrest = (monthlyBalance * intrestRate) / 100;
+            int monthlyTotal = intrest + monthlyBalance;
+            System.out.println("LOAN APPROVED! You will now be charged $" + monthlyTotal + " per month for the next " + months + " months.");
+        }
     }
     public static void main(String[] args){
-        PiatAdvDroidLmnh bert = new PiatAdvDroidLmnh("Bert");
+        PiatAdvDroidLmnh ernie = new PiatAdvDroidLmnh("Ernie");
         PiatAdvDroidLmnh charger1 = new PiatAdvDroidLmnh("Charger1");
-        PiatAdvDroidLmnh charger2 = new PiatAdvDroidLmnh("Charger2");
-        System.out.println(bert);
-        bert.todoList("add", "Go to electronics store");
-        bert.todoList("add", "Buy some processors");
-        bert.todoList("add", "Go back home and charge battery");
-        bert.todoList("remove", "dfjdkf");
-        bert.todoList("remove", "Go to electronics store");
-        bert.todoList("view", "");
-        bert.todoList("remove", "Buy some processors");
-        bert.todoList("remove", "Go back home and charge battery");
-        bert.todoList("view", "");
-        bert.energyReport();
-        charger1.energyTransfer(bert, 110);
-        charger1.energyTransfer(bert, 100);
-        charger1.energyTransfer(bert, 70);
-        bert.randomInspire(1);
-        bert.randomInspire(2);
-        bert.randomInspire(3);
-        bert.randomInspire(4);
-        bert.energyReport();
-        charger2.energyTransfer(bert, 80);
-        bert.loanCalc(5, 0, 10, 0);
-        bert.loanCalc(5, 1000, 0, 500);
-        bert.loanCalc(5, 1000, 10, 2000);
-        bert.loanCalc(5, 1000, 10, 10);
-        bert.energyReport();
-        charger1.energyTransfer(bert, 30);
-        bert.add2nums(50,159);
-        bert.sub2nums(10000, 99);
-        bert.div2nums(100, 3);
-        bert.multi2nums(99, 99);
-        bert.performTask("Cleaning");
+        System.out.println(ernie);
+        ernie.add2nums(50, 999);
+        ernie.sub2nums(999, 998);
+        ernie.div2nums(100, 4);
+        ernie.multi2nums(9999,8888);
+        charger1.energyTransfer(ernie, 110);
+        charger1.energyTransfer(ernie, 100);
+        charger1.energyTransfer(ernie, 90);
+        ernie.todoList("view", "");
+        ernie.todoList("add", "Go to the shops");
+        ernie.todoList("add", "Buy Bluetooth adapters");
+        ernie.todoList("add", "Help Frankie");
+        ernie.todoList("view", "");
+        ernie.todoList("remove", "Help Spankie");
+        ernie.todoList("remove", "Help Frankie");
+        ernie.todoList("view", "");
+        ernie.energyReport();
+        ernie.randomInspire(1);
+        ernie.randomInspire(2);
+        ernie.randomInspire(3);
+        ernie.randomInspire(4);
+        ernie.performTask("Cleaning");
+        ernie.loanCalc(5, 0, 10, 5000);
+        ernie.loanCalc(5, 1000, 0 ,0);
+        ernie.loanCalc(5, 1000, 10, 1000);
+        ernie.loanCalc(1, 5000, 10, 1000);
+
+
+
     }
 }
