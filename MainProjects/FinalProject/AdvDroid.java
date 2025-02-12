@@ -1,6 +1,6 @@
 import java.util.ArrayList;// This is imported so we can create the todo list.
 
-public class PiatAdvDroid{ // Public class that holds the entire project
+public class AdvDroid{ // Public class that holds the entire project
     int batteryLife = 100; // How much battery life every new droid begins with. 
     String name; // Acknowledgment that the word 'name' is a String
     ArrayList<String> todoList;
@@ -9,7 +9,7 @@ public class PiatAdvDroid{ // Public class that holds the entire project
         return "Hello I am " + name + "! How can I help you today?";
     }
 // Constructor method to call new Droids and holds a string to call them by name
-    public PiatAdvDroid(String droidName){
+    public AdvDroid(String droidName){
         name = droidName; // This turns name into a actual variable.
         todoList = new ArrayList<>(); // this creates the todo list from the ArrayList util.
     }
@@ -58,7 +58,7 @@ public class PiatAdvDroid{ // Public class that holds the entire project
 
            }
 // Method to Transfer energy from one droid to another
-    public void energyTransfer(PiatAdvDroid otherDroid, int energyAmount){
+    public void energyTransfer(AdvDroid otherDroid, int energyAmount){
         int batteryLeft = 100 - otherDroid.batteryLife; //This variable calculates how much battery space the recieving droid has remaining.
             if (this.batteryLife < energyAmount){//if the giving droid does not have enough battery the  transfer will fail
                 System.out.println("Transfer Failed! " + this.name + " does not have enough energy to make the transfer. The maximum that " + this.name + " can transfer is " + this.batteryLife + "%.");
@@ -234,13 +234,13 @@ public class PiatAdvDroid{ // Public class that holds the entire project
     }
 
     // Main method that calls all other methods
-    public static void main(String[] args){:
-        PiatAdvDroid neo = new PiatAdvDroid("Neo");//This is how to create a new droid
-        PiatAdvDroid xeon = new PiatAdvDroid("Xeon");
-        PiatAdvDroid charger1 = new PiatAdvDroid("Charger1");
-        PiatAdvDroid charger2 = new PiatAdvDroid("Charger2");
-        PiatAdvDroid charger3 = new PiatAdvDroid("Charger3");
-        PiatAdvDroid charger4 = new PiatAdvDroid("Charger4");
+    public static void main(String[] args){
+        AdvDroid neo = new AdvDroid("Neo");//This is how to create a new droid
+        AdvDroid xeon = new AdvDroid("Xeon");
+        AdvDroid charger1 = new AdvDroid("Charger1");
+        AdvDroid charger2 = new AdvDroid("Charger2");
+        AdvDroid charger3 = new AdvDroid("Charger3");
+        AdvDroid charger4 = new AdvDroid("Charger4");
         System.out.println(neo); //This prints the Droids welcome message.
         neo.performTask("Cleaning");// This is how to perform a task.
         charger1.energyTransfer(neo, 30);// This is how to transfer energy from one droid to another.

@@ -1,3 +1,0 @@
-- added new a feature to the BuildDroid.java energyTransfer method the method can now determine how much energy the otherDroid has left and if the ammount recieved exceeds this we print a error that also confirms the maxium ammount the drone can receive.
-
-- Finished lmnhDroids.java with zero assisant.
